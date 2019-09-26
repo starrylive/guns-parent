@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
 
+    // check = false 关闭启动检查，否则没有开启user服务则本服务也无法启动
     @Reference(interfaceClass = UserAPI.class,check = false)
     private UserAPI userAPI;
 
@@ -23,6 +24,9 @@ public class UserController {
         }
         if(userModel.getPassword() == null || userModel.getPassword().trim().length()==0){
             return ResponseVO.serviceFail("密码不能为空");
+        }
+        if (!userAPI.checkUsername(userModel.getUsername())){
+            return ResponseVO.serviceFail("用户名已存在");
         }
 
         boolean isSuccess = userAPI.register(userModel);
@@ -61,13 +65,18 @@ public class UserController {
                 2、后端服务器删除活跃用户缓存
             现状：
                 1、前端删除掉JWT
-         */
 
+            上面的看看就好，如果用redis就不一样了
+         */
 
         return ResponseVO.success("用户退出成功");
     }
 
 
+    /**
+     * 获取用户信息
+     * com.stylefeng.guns.rest.modular.auth.filter.AuthFilter中会保存userid
+     */
     @GetMapping(value="getUserInfo")
     public ResponseVO getUserInfo(){
         // 获取当前登陆用户

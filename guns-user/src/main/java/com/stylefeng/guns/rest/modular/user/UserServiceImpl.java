@@ -8,12 +8,12 @@ import com.stylefeng.guns.api.user.vo.UserModel;
 import com.stylefeng.guns.core.util.MD5Util;
 import com.stylefeng.guns.rest.common.persistence.dao.MoocUserTMapper;
 import com.stylefeng.guns.rest.common.persistence.model.MoocUserT;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Component
+//loadbalance = "roundrobin" 负载均衡策略
 @Service(interfaceClass = UserAPI.class,loadbalance = "roundrobin" )
 //这里可以不实现，实现只是为了方便
 public class UserServiceImpl implements UserAPI{
@@ -77,24 +77,24 @@ public class UserServiceImpl implements UserAPI{
 
     /**
      * MoocUserT转换成UserInfoModel
+     * 可以用BeanUtils替代这种做法
      */
     private UserInfoModel do2UserInfo(MoocUserT moocUserT){
         UserInfoModel userInfoModel = new UserInfoModel();
 
-        BeanUtils.copyProperties(userInfoModel, moocUserT);
-//        userInfoModel.setUuid(moocUserT.getUuid());
-//        userInfoModel.setHeadAddress(moocUserT.getHeadUrl());
-//        userInfoModel.setPhone(moocUserT.getUserPhone());
+        userInfoModel.setUuid(moocUserT.getUuid());
+        userInfoModel.setHeadAddress(moocUserT.getHeadUrl());
+        userInfoModel.setPhone(moocUserT.getUserPhone());
         userInfoModel.setUpdateTime(moocUserT.getUpdateTime().getTime());
-//        userInfoModel.setEmail(moocUserT.getEmail());
-//        userInfoModel.setUsername(moocUserT.getUserName());
-//        userInfoModel.setNickname(moocUserT.getNickName());
+        userInfoModel.setEmail(moocUserT.getEmail());
+        userInfoModel.setUsername(moocUserT.getUserName());
+        userInfoModel.setNickname(moocUserT.getNickName());
         userInfoModel.setLifeState(""+moocUserT.getLifeState());
-//        userInfoModel.setBirthday(moocUserT.getBirthday());
-//        userInfoModel.setAddress(moocUserT.getAddress());
-//        userInfoModel.setSex(moocUserT.getUserSex());
+        userInfoModel.setBirthday(moocUserT.getBirthday());
+        userInfoModel.setAddress(moocUserT.getAddress());
+        userInfoModel.setSex(moocUserT.getUserSex());
         userInfoModel.setBeginTime(moocUserT.getBeginTime().getTime());
-//        userInfoModel.setBiography(moocUserT.getBiography());
+        userInfoModel.setBiography(moocUserT.getBiography());
 
         return userInfoModel;
     }
@@ -112,6 +112,7 @@ public class UserServiceImpl implements UserAPI{
     @Override
     public UserInfoModel updateUserInfo(UserInfoModel userInfoModel) {
         // 将传入的参数转换为DO 【MoocUserT】
+        // 时间为null是为了让数据库自动更新时间
         MoocUserT moocUserT = new MoocUserT();
         moocUserT.setUuid(userInfoModel.getUuid());
         moocUserT.setNickName(userInfoModel.getNickname());

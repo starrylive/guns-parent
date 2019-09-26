@@ -30,6 +30,7 @@ public class AuthController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    // check = false 关闭启动检查，否则没有开启user服务则本服务也无法启动
     @Reference(interfaceClass = UserAPI.class,check = false)
     private UserAPI userAPI;
 

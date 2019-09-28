@@ -46,6 +46,7 @@ public class AuthFilter extends OncePerRequestFilter {
         String ignoreUrl = jwtProperties.getIgnoreUrl();
         String[] ignoreUrls = ignoreUrl.split(",");
         for(int i=0;i<ignoreUrls.length;i++){
+            // 使用startsWith是为了restful风格接口拦截只能拦截前缀
             if(request.getServletPath().startsWith(ignoreUrls[i])){
                 // 实现方式就是过滤器放行，跟上面的一样
                 chain.doFilter(request, response);

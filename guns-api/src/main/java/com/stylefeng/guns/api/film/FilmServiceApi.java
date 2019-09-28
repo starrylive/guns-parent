@@ -8,7 +8,7 @@ public interface FilmServiceApi {
 
     // 获取banners
     List<BannerVO> getBanners();
-    // 获取热映影片
+    // 获取热映影片 todo 参数应该封装成一个对象
     FilmVO getHotFilms(boolean isLimit,int nums,int nowPage,int sortId,int sourceId,int yearId,int catId);
     // 获取即将上映影片[受欢迎程度做排序]
     FilmVO getSoonFilms(boolean isLimit,int nums,int nowPage,int sortId,int sourceId,int yearId,int catId);
@@ -24,7 +24,7 @@ public interface FilmServiceApi {
     List<FilmInfo> getBoxRanking();
     // 获取人气排行榜
     List<FilmInfo> getExpectRanking();
-    // 获取Top100
+    // 获取Top100(应该是top10)
     List<FilmInfo> getTop();
 
     // ==== 获取影片条件接口

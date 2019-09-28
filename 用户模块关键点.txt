@@ -1,0 +1,4 @@
+com.stylefeng.guns.rest.modular.auth.controller.AuthController
+com.stylefeng.guns.rest.modular.auth.filter.AuthFilter
+com.stylefeng.guns.rest.modular.user.UserController
+com.stylefeng.guns.rest.modular.user.UserServiceImpl

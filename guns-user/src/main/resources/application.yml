@@ -25,7 +25,7 @@ mybatis-plus:
     cache-enabled: true #配置的缓存的全局开关
     lazyLoadingEnabled: true #延时加载的开关
     multipleResultSetsEnabled: true #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
 
 spring:
   application:
@@ -45,6 +45,7 @@ spring:
 
 logging:
   level.root: info
-  level.com.stylefeng: info
+  # 打印sql，就设置成debug，如果要详情，再开启上面的plus插件配置
+  level.com.stylefeng: debug
   path: logs/
   file: meetingfilm-user.log

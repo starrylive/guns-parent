@@ -1,0 +1,44 @@
+        ------------------------------------依赖坑------------------------------------------------
+        文档：https://github.com/alibaba/dubbo-spring-boot-starter/blob/master/README_zh.md
+        <dependency>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        
+        文档:https://github.com/apache/dubbo-spring-boot-project/tree/0.2.x
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+
+        上面两个依赖不一样的
+
+        ----------------------------------guns版本坑------------------------------------------------
+        本项目应该是用gunsv4.x，github上没找到相关标签，gitee上就有
+        https://gitee.com/stylefeng/guns/blob/v4.0/pom.xml
+        后期这个开源项目逐渐商业化了，不太建议使用
+
+
+
+        
+    // check = false 关闭启动检查，否则没有开启user服务则本服务也无法启动
+    @Reference(interfaceClass = UserAPI.class,check = false)
+
+
+
+    rpc（底层tcp）适合传输的包在100k以内
+
+
+    再guns中要关闭sql打印，就要将依赖模块中的sql打印配置也注释掉，同时所有级别设置为info
+
+    可以在api层用swagger
+
+    guns的core模块中的com.stylefeng.guns.core.config.DefaultFastjsonConfig会对null进行拦截，会将null改成空字符串""
+    貌似还看到类似于日期转换的函数
+
+
+    postman使用restful风格的url时，需要对中文进行转码，方法就是选中url的中文，右键->encodeUriComponent，之后成功，服务端也能解析出中文
+
+    从v2.7.0开始，Dubbo的所有异步编程接口开始以CompletableFuture为基础

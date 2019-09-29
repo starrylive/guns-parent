@@ -20,7 +20,8 @@
     </resultMap>
 
     <!-- todo 这里的sql不应该用子查询，应该用join(如果超过3张表，应该在代码上逻辑上join，缺点是代码可能比较长，可以考虑多线程)-->
-    <!-- todo 还有些吐槽的地方，既然要转换成，号，那为什么不一开始就用，号呢，mysql的某些函数还可能导致索引失效-->
+    <!-- todo 还有些吐槽的地方，既然要转换成,号,那为什么不一开始就用,号呢，mysql的某些函数还可能导致索引失效-->
+    <!-- todo 由于我学习本门课程的主要目的是学习dubbo及微服务思想上面，所以这些数据库的大问题就先放着，在校内也有其它实际的项目等着开工-->
 
     <select id="getFilmDetailByName" parameterType="java.lang.String" resultType="com.stylefeng.guns.api.film.vo.FilmDetailVO">
           SELECT

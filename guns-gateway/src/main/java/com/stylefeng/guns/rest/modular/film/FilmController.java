@@ -232,6 +232,7 @@ public class FilmController {
                              int searchType) throws ExecutionException, InterruptedException {
 
         // 根据searchType，判断查询类型
+        searchParam = "%";
         FilmDetailVO filmDetail = filmServiceApi.getFilmDetail(searchType, searchParam);
 
         if(filmDetail==null){

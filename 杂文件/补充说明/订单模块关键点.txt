@@ -1,0 +1,6 @@
+com.stylefeng.guns.core.util.TokenBucket   令牌桶
+这里有个坑就是这个令牌桶不是线程安全的，我自己加了synchronized
+可以用google的工具类实现   https://blog.csdn.net/w772397262/article/details/89217173
+也可以考虑dubbo自身的实现
+
+InheritableThreadLocal的相关知识

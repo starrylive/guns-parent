@@ -8,6 +8,7 @@ import com.stylefeng.guns.api.film.vo.*;
 import com.stylefeng.guns.core.util.DateUtil;
 import com.stylefeng.guns.rest.common.persistence.dao.*;
 import com.stylefeng.guns.rest.common.persistence.model.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 @Component
 @Service(interfaceClass = FilmServiceApi.class)
 public class DefaultFilmServiceImpl implements FilmServiceApi {
@@ -42,6 +44,9 @@ public class DefaultFilmServiceImpl implements FilmServiceApi {
 
     @Override
     public List<BannerVO> getBanners() {
+
+        log.info("2");
+
         List<BannerVO> result = new ArrayList<>();
         List<MoocBannerT> moocBanners = moocBannerTMapper.selectList(null);
 

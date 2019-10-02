@@ -12,6 +12,8 @@ jwt:
 
 server:
   port: 81 #项目端口
+#  port: 82 #项目端口
+#  port: 83 #项目端口
 
 #mybatis-plus:
 #  下面两行我去掉了也没什么影响
@@ -31,6 +33,8 @@ server:
 spring:
   application:
     name: meeting-gateway
+#    name: meeting-gateway2
+#    name: meeting-gateway3
   dubbo:
     server: true
     registry: zookeeper://192.168.129.133:2181

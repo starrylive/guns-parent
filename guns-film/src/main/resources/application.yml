@@ -10,6 +10,7 @@ jwt:
   md5-key: randomKey      #md5加密混淆key
 
 server:
+#  port: 1239 #项目端口
   port: 8084 #项目端口
 
 mybatis-plus:
@@ -24,17 +25,19 @@ mybatis-plus:
     cache-enabled: true #配置的缓存的全局开关
     lazyLoadingEnabled: true #延时加载的开关
     multipleResultSetsEnabled: true #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
 
 spring:
   application:
     name: meeting-user
+#    name: meeting-user5
   dubbo:
     server: true
     registry: zookeeper://192.168.129.133:2181
     protocol:
       name: dubbo
       port: 20882
+#      port: 10999
   datasource:
       url: jdbc:mysql://192.168.129.133/guns_rest?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
       username: root
@@ -44,6 +47,6 @@ spring:
 logging:
   level.root: info
   # 打印sql，就设置成debug，如果要详情，再开启上面的plus插件配置
-  level.com.stylefeng: debug
+  level.com.stylefeng: info
   path: logs/
   file: guns-rest.log

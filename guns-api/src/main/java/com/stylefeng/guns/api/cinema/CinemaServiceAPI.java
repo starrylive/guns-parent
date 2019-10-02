@@ -29,6 +29,6 @@ public interface CinemaServiceAPI {
         该部分是订单模块需要的内容
      */
     // todo 开发订单模块的时候补充
-//    OrderQueryVO getOrderNeeds(int fieldId);
+    OrderQueryVO getOrderNeeds(int fieldId);
 
 }

@@ -1,0 +1,504 @@
+{
+	"info": {
+		"_postman_id": "744547b2-b5ec-4e83-b0aa-080a53c57e57",
+		"name": "猫眼系统",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "用户模块接口",
+			"item": [
+				{
+					"name": "登录认证",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:81/auth?userName=admin&password=admin123",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"auth"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": "admin"
+								},
+								{
+									"key": "password",
+									"value": "admin123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "token验证测试",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJyYW5kb21LZXkiOiIyeG1hb2YiLCJzdWIiOiIzIiwiZXhwIjoxNTY5OTk2NTI3LCJpYXQiOjE1NjkzOTE3Mjd9.XIqjvEemQzqflVYsBcDQU9PIGuKNU0hgSaaO5gsAELKs0GCs8dgSgxbXQcxk_JV-iu3SmM9EWH2SfCmu9LUPhQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:81/hello",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"hello"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJyYW5kb21LZXkiOiIyeG1hb2YiLCJzdWIiOiIzIiwiZXhwIjoxNTY5OTk2NTI3LCJpYXQiOjE1NjkzOTE3Mjd9.XIqjvEemQzqflVYsBcDQU9PIGuKNU0hgSaaO5gsAELKs0GCs8dgSgxbXQcxk_JV-iu3SmM9EWH2SfCmu9LUPhQ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "token验证测试 Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJyYW5kb21LZXkiOiIyeG1hb2YiLCJzdWIiOiIzIiwiZXhwIjoxNTY5OTk2NTI3LCJpYXQiOjE1NjkzOTE3Mjd9.XIqjvEemQzqflVYsBcDQU9PIGuKNU0hgSaaO5gsAELKs0GCs8dgSgxbXQcxk_JV-iu3SmM9EWH2SfCmu9LUPhQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:81/hello",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"hello"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJyYW5kb21LZXkiOiIyeG1hb2YiLCJzdWIiOiIzIiwiZXhwIjoxNTY5OTk2NTI3LCJpYXQiOjE1NjkzOTE3Mjd9.XIqjvEemQzqflVYsBcDQU9PIGuKNU0hgSaaO5gsAELKs0GCs8dgSgxbXQcxk_JV-iu3SmM9EWH2SfCmu9LUPhQ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "检测用户名",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:81/user/check?username=asdasd",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"user",
+								"check"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "asdasd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "注册",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "chenwenjie",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "mimajiushi",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "1498780478@qq.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "15920323196",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "华软",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:81/user/register",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "token获取用户信息",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzUxMiJ9.eyJyYW5kb21LZXkiOiJ6eWNzaHMiLCJzdWIiOiIyIiwiZXhwIjoxNTcwMDAyMzkwLCJpYXQiOjE1NjkzOTc1OTB9.RkBSlDhLdyT-oRECnzZx61CY3YBXNMgcv4B27fuAPrsRughe7oaziwLINBL7Ete1OI5_uSa9XBcBoS-vfnNL5w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:81/user/getUserInfo",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"user",
+								"getUserInfo"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "影片模块接口",
+			"item": [
+				{
+					"name": "首页获取数据",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:81/film/getIndex",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"film",
+								"getIndex"
+							]
+						},
+						"description": "首页获取数据，无需认证"
+					},
+					"response": [
+						{
+							"name": "首页获取数据",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:81/film/getIndex",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "81",
+									"path": [
+										"film",
+										"getIndex"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1888"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Sep 2019 06:47:06 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"banners\": [\n            {\n                \"bannerAddress\": \"banners/9d75708ae91d5fc918369b76e9e2edba197666.jpg\",\n                \"bannerId\": \"2\",\n                \"bannerUrl\": \"www.meetingshop.cn\"\n            },\n            {\n                \"bannerAddress\": \"banners/15b3730838f35d56a76d88a1787aaaa5186414.jpg\",\n                \"bannerId\": \"3\",\n                \"bannerUrl\": \"www.meetingshop.cn\"\n            },\n            {\n                \"bannerAddress\": \"banners/51afa73f0347e9b98957c53fa971d41491652.jpg\",\n                \"bannerId\": \"4\",\n                \"bannerUrl\": \"www.meetingshop.cn\"\n            },\n            {\n                \"bannerAddress\": \"banners/6605d3518e2bba10f29a6f9ae32b361987015.jpg\",\n                \"bannerId\": \"5\",\n                \"bannerUrl\": \"www.meetingshop.cn\"\n            },\n            {\n                \"bannerAddress\": \"banners/c1a713981cabef02c88ae5f42888de70183835.jpg\",\n                \"bannerId\": \"6\",\n                \"bannerUrl\": \"www.meetingshop.cn\"\n            }\n        ],\n        \"boxRanking\": [\n            {\n                \"boxNum\": 309600,\n                \"expectNum\": 231432491,\n                \"filmId\": \"2\",\n                \"filmName\": \"我不是药神\",\n                \"filmScore\": \"9.7\",\n                \"filmType\": 0,\n                \"imgAddress\": \"films/238e2dc36beae55a71cabfc14069fe78236351.jpg\",\n                \"score\": \"9.7\",\n                \"showTime\": \"2018-07-05\"\n            }\n        ],\n        \"expectRanking\": [],\n        \"hotFilms\": {\n            \"filmInfo\": [\n                {\n                    \"boxNum\": 309600,\n                    \"expectNum\": 231432491,\n                    \"filmId\": \"2\",\n                    \"filmName\": \"我不是药神\",\n                    \"filmScore\": \"9.7\",\n                    \"filmType\": 0,\n                    \"imgAddress\": \"films/238e2dc36beae55a71cabfc14069fe78236351.jpg\",\n                    \"score\": \"9.7\",\n                    \"showTime\": \"2018-07-05\"\n                }\n            ],\n            \"filmNum\": 1,\n            \"nowPage\": 0,\n            \"totalPage\": 0\n        },\n        \"soonFilms\": {\n            \"filmInfo\": [],\n            \"filmNum\": 0,\n            \"nowPage\": 0,\n            \"totalPage\": 0\n        },\n        \"top100\": [\n            {\n                \"boxNum\": 309600,\n                \"expectNum\": 231432491,\n                \"filmId\": \"2\",\n                \"filmName\": \"我不是药神\",\n                \"filmScore\": \"9.7\",\n                \"filmType\": 0,\n                \"imgAddress\": \"films/238e2dc36beae55a71cabfc14069fe78236351.jpg\",\n                \"score\": \"9.7\",\n                \"showTime\": \"2018-07-05\"\n            }\n        ]\n    },\n    \"imgPre\": \"http://img.meetingshop.cn/\",\n    \"msg\": \"\",\n    \"nowPage\": 0,\n    \"status\": 0,\n    \"totalPage\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "首页分类",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:81/film/getConditionList?catId=1&sourceId=1&13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"film",
+								"getConditionList"
+							],
+							"query": [
+								{
+									"key": "catId",
+									"value": "1"
+								},
+								{
+									"key": "sourceId",
+									"value": "1"
+								},
+								{
+									"key": "13",
+									"value": ""
+								}
+							]
+						},
+						"description": "这部分本该全都是前端实现的"
+					},
+					"response": []
+				},
+				{
+					"name": "查询影片接口",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:81/film/getFilms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"film",
+								"getFilms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "影片详情",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:81/film/films/%E6%88%91?searchType=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"film",
+								"films",
+								"%E6%88%91"
+							],
+							"query": [
+								{
+									"key": "searchType",
+									"value": "1"
+								}
+							]
+						},
+						"description": "要使用浏览器"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "影院模块",
+			"item": [
+				{
+					"name": "根据元素获取影院",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:81/cinema/getCinemas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"cinema",
+								"getCinemas"
+							]
+						},
+						"description": "根据brandId，districtId，hallType获取影院"
+					},
+					"response": []
+				},
+				{
+					"name": "用户选择地区",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:81/cinema/getCondition",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"cinema",
+								"getCondition"
+							]
+						},
+						"description": "跟某个接口一样，这块应该改成前端实现而不是后端，纯粹的浪费jvm"
+					},
+					"response": []
+				},
+				{
+					"name": "获取影院的影片场次信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:81/cinema/getFields?cinemaId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"cinema",
+								"getFields"
+							],
+							"query": [
+								{
+									"key": "cinemaId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取影片场次的选座信息",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:81/cinema/getFieldInfo?cinemaId=1&fieldId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"cinema",
+								"getFieldInfo"
+							],
+							"query": [
+								{
+									"key": "cinemaId",
+									"value": "1"
+								},
+								{
+									"key": "fieldId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "订单模块",
+			"item": [
+				{
+					"name": "购票接口",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJyYW5kb21LZXkiOiI0Nms3MmUiLCJzdWIiOiIyIiwiZXhwIjoxNTcwNjAwODY3LCJpYXQiOjE1Njk5OTYwNjd9._Yy2aabqBUi40oXXanEJuecSPIxtrznuTpftOKx8wa2xURzzG41-wF9_SeF5Uy_OiMPZbXraXzEb6MbEu88Jag",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:81/order/buyTickets?fieldId=1&soldSeats=1&seatsName=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "81",
+							"path": [
+								"order",
+								"buyTickets"
+							],
+							"query": [
+								{
+									"key": "fieldId",
+									"value": "1"
+								},
+								{
+									"key": "soldSeats",
+									"value": "1"
+								},
+								{
+									"key": "seatsName",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

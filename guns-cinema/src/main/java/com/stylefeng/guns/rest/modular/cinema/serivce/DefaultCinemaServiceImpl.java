@@ -6,16 +6,15 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.stylefeng.guns.api.cinema.CinemaServiceAPI;
 import com.stylefeng.guns.api.cinema.vo.*;
 import com.stylefeng.guns.rest.common.persistence.dao.*;
-import com.stylefeng.guns.rest.common.persistence.model.MoocAreaDictT;
-import com.stylefeng.guns.rest.common.persistence.model.MoocBrandDictT;
-import com.stylefeng.guns.rest.common.persistence.model.MoocCinemaT;
-import com.stylefeng.guns.rest.common.persistence.model.MoocHallDictT;
+import com.stylefeng.guns.rest.common.persistence.model.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Component
 @Service(interfaceClass = CinemaServiceAPI.class)
 public class DefaultCinemaServiceImpl implements CinemaServiceAPI {
@@ -37,6 +36,7 @@ public class DefaultCinemaServiceImpl implements CinemaServiceAPI {
     //1、根据CinemaQueryVO，查询影院列表
     @Override
     public Page<CinemaVO> getCinemas(CinemaQueryVO cinemaQueryVO){
+        log.info("2");
         // 业务实体集合
         List<CinemaVO> cinemas = new ArrayList<>();
 
@@ -220,5 +220,19 @@ public class DefaultCinemaServiceImpl implements CinemaServiceAPI {
 
         return filmInfoVO;
     }
+
+    @Override
+    public OrderQueryVO getOrderNeeds(int fieldId) {
+
+        OrderQueryVO orderQueryVO = new OrderQueryVO();
+
+        MoocFieldT moocFieldT = moocFieldTMapper.selectById(fieldId);
+
+        orderQueryVO.setCinemaId(moocFieldT.getCinemaId()+"");
+        orderQueryVO.setFilmPrice(moocFieldT.getPrice()+"");
+
+        return orderQueryVO;
+    }
+
 
 }

@@ -51,3 +51,7 @@ mybatis-plus也不能自动过滤%和_这种特殊字符，不过考虑到数据
 分页还是建议采用page-helper
 
 mybatis-plus或者dubbo的缓存最好换成redis实现
+
+order模块中的mapper.xml文件中的sql用到film模块的表，这样不便于分库
+
+maven工程没必要使用parent，因为这样会导致分开部署更复杂，除非有自己的maven仓库

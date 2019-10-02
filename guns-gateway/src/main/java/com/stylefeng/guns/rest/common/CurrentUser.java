@@ -6,6 +6,7 @@ package com.stylefeng.guns.rest.common;
 
 public class CurrentUser {
 
+    // todo InheritableThreadLocal避免和豪猪的线程池发生冲突，底层相关我还不太了解
     // 线程绑定的存储空间
     private static final InheritableThreadLocal<String> threadLocal = new InheritableThreadLocal<>();
     public static void saveUserId(String userId){

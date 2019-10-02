@@ -1,6 +1,7 @@
 package com.stylefeng.guns.rest.modular.film;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.dubbo.rpc.RpcContext;
 import com.stylefeng.guns.api.film.FilmAsyncServiceApi;
 import com.stylefeng.guns.api.film.FilmServiceApi;
@@ -9,6 +10,7 @@ import com.stylefeng.guns.rest.modular.film.vo.FilmConditionVO;
 import com.stylefeng.guns.rest.modular.film.vo.FilmIndexVO;
 import com.stylefeng.guns.rest.modular.film.vo.FilmRequestVO;
 import com.stylefeng.guns.rest.modular.vo.ResponseVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -16,6 +18,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+
+@Slf4j
 @RestController
 @RequestMapping("/film/")
 public class FilmController {
@@ -23,7 +27,7 @@ public class FilmController {
     // todo 这个应该写到配置里去
     private static final String img_pre = "http://img.meetingshop.cn/";
 
-    @Reference(interfaceClass = FilmServiceApi.class,check = false)
+    @Reference(interfaceClass = FilmServiceApi.class,check = false, loadbalance = "RoundRobin")
     private FilmServiceApi filmServiceApi;
 
     @Reference(interfaceClass = FilmAsyncServiceApi.class,async = true,check = false)
@@ -41,6 +45,7 @@ public class FilmController {
      */
     @GetMapping(value = "getIndex")
     public ResponseVO<FilmIndexVO> getIndex(){
+        log.info("1");
 
         FilmIndexVO filmIndexVO = new FilmIndexVO();
         // 获取banner信息

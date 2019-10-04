@@ -41,7 +41,7 @@ public class DefaultOrderServiceImpl implements OrderServiceAPI {
     // 验证是否为真实的座位编号
     @Override
     public boolean isTrueSeats(String fieldId, String seats) {
-        // 根据FieldId找到对应的座位位置图(json文件)
+        // 根据FieldId找到对应的座位位置图
         String seatPath = moocOrderTMapper.getSeatsByFieldId(fieldId);
 
         // 读取位置图，判断seats是否为真
@@ -96,7 +96,6 @@ public class DefaultOrderServiceImpl implements OrderServiceAPI {
     }
 
     // 创建新的订单
-    // todo 在电商系统中订单创建的时间比较长，实际业务中应用mq异步化，而mq的分布式事务和应答机制也是重点
     @Override
     public OrderVO saveOrderInfo(
             Integer fieldId, String soldSeats, String seatsName, Integer userId) {
@@ -199,6 +198,42 @@ public class DefaultOrderServiceImpl implements OrderServiceAPI {
         }else{
             String soldSeatsByFieldId = moocOrderTMapper.getSoldSeatsByFieldId(fieldId);
             return soldSeatsByFieldId;
+        }
+    }
+
+    @Override
+    public OrderVO getOrderInfoById(String orderId) {
+
+        OrderVO orderInfoById = moocOrderTMapper.getOrderInfoById(orderId);
+
+        return orderInfoById;
+    }
+
+    @Override
+    public boolean paySuccess(String orderId) {
+        MoocOrderT moocOrderT = new MoocOrderT();
+        moocOrderT.setUuid(orderId);
+        moocOrderT.setOrderStatus(1);
+
+        Integer integer = moocOrderTMapper.updateById(moocOrderT);
+        if(integer>=1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public boolean payFail(String orderId) {
+        MoocOrderT moocOrderT = new MoocOrderT();
+        moocOrderT.setUuid(orderId);
+        moocOrderT.setOrderStatus(2);
+
+        Integer integer = moocOrderTMapper.updateById(moocOrderT);
+        if(integer>=1){
+            return true;
+        }else{
+            return false;
         }
     }
 }

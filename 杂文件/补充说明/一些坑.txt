@@ -55,3 +55,11 @@ mybatis-plus或者dubbo的缓存最好换成redis实现
 order模块中的mapper.xml文件中的sql用到film模块的表，这样不便于分库
 
 maven工程没必要使用parent，因为这样会导致分开部署更复杂，除非有自己的maven仓库
+
+支付模块同一订单不能使用太多次，否则会失败
+
+支付宝当面付的二维码
+
+com/stylefeng/guns/rest/modular/order/OrderController.java:160这里调用接口有时后会调用多次，目前还不知道什么原因
+课程里有提到是支付宝接口不稳定的原因，但我还不知道这函数是怎么被回调的
+因为是沙箱环境，所以数据可能隔一段时间就会被支付宝清空，如果时间间隔比较长，在用旧订单验证订单号支付是否成功时，应重新下单

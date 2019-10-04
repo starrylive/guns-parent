@@ -2,6 +2,7 @@ package com.stylefeng.guns.rest.modular.order.serivce;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.dubbo.rpc.RpcContext;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -202,6 +203,45 @@ public class OrderServiceImpl2018 implements OrderServiceAPI {
         }else{
             String soldSeatsByFieldId = moocOrder2018TMapper.getSoldSeatsByFieldId(fieldId);
             return soldSeatsByFieldId;
+        }
+    }
+
+    @Override
+    public OrderVO getOrderInfoById(String orderId) {
+
+        OrderVO orderInfoById = moocOrder2018TMapper.getOrderInfoById(orderId);
+
+        return orderInfoById;
+    }
+
+    @Override
+    public boolean paySuccess(String orderId) {
+
+//        String userId = RpcContext.getContext().getAttachment("userId");
+//        System.out.println("userId="+userId);
+
+        MoocOrder2018T moocOrderT = new MoocOrder2018T();
+        moocOrderT.setUuid(orderId);
+        moocOrderT.setOrderStatus(1);
+        Integer integer = moocOrder2018TMapper.updateById(moocOrderT);
+        if(integer>=1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public boolean payFail(String orderId) {
+        MoocOrder2018T moocOrderT = new MoocOrder2018T();
+        moocOrderT.setUuid(orderId);
+        moocOrderT.setOrderStatus(2);
+
+        Integer integer = moocOrder2018TMapper.updateById(moocOrderT);
+        if(integer>=1){
+            return true;
+        }else{
+            return false;
         }
     }
 }

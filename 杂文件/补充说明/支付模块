@@ -1,0 +1,7 @@
+支付接口建议使用第三方的sdk，不然代码移植性是比较差的
+
+本地伪装(mock)：如果是spring boot + dubbo 直接用 Hystrix
+mock的一个好处是可以对整个接口进行降级，而Hystrix是一个函数
+mock也可以对一个函数降级，看官方文档的xml转换成注解应该就是@Parameter(key = "xxx")
+
+mock只会捕获RpcException

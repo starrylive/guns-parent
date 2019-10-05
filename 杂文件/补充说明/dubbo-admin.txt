@@ -1,0 +1,10 @@
+npm run dev 运行dubbo-admin之前，要先去ui里的index.js修改配置，因为eslint语法限制过于严格，可以在config中的 index.js 设置 useEslint为 false
+https://blog.csdn.net/weixin_41347065/article/details/85635502
+
+去看了下官网还有别的惊喜  https://github.com/apache/dubbo-admin
+Once deployed, you can check http://localhost:8080/swagger-ui.html to check all restful api and models
+该项目提供了swagger-ui，可以根据自己需求实现前端
+
+还有兼容dubbo2.6 兼容说明https://github.com/apache/dubbo-admin/wiki/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86%E5%85%BC%E5%AE%B9%E6%80%A7%E8%AF%B4%E6%98%8E
+
+也可以当作swagger的学习项目，因为这项目的swagger跟以往的不太一样
